@@ -1,0 +1,65 @@
+html{
+  height: 100%;
+  background: url('./background.jpg') no-repeat center;
+  background-size: cover;
+}
+
+body{
+  height: 80%;
+}
+
+#content{
+  margin: 5% 10%;
+  background-color: white;
+  display: flex;
+  height: 100%;
+}
+
+#todo{
+  width: 60%;
+  border-width: 4px;
+  border-style: none solid none none;
+  border-color: #f9f5ea;
+}
+
+#info{
+  width: 40%;
+}
+
+#todo a{
+  font-size: x-large;
+  padding: 2% 5% 2% 5%;
+  border: #c0c0c0;
+  border-width: 1px;
+  border-style: none none solid none;
+  display: block;
+  text-decoration: none;
+  color: black;
+}
+
+#todo a.new_todo{
+  font-size: xx-large;
+  color: darksalmon;
+}
+
+#todo a:active{
+  color: white;
+  background-color: pink;
+}
+
+#new_todo:active{
+  font-size: xx-large !important;
+  color: white !important;
+  background-color: pink !important;
+}
+
+.title{
+  color: white;
+  background-color: pink;
+  font-size: xx-large;
+  height: 2em;
+  display: flex;
+  justify-content:center;
+  align-items:Center;
+}
+
