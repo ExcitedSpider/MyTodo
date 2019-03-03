@@ -53,6 +53,40 @@ body{
   background-color: pink !important;
 }
 
+#info ul{
+  list-style: outside none; 
+  padding-left: 0%;
+  margin-top: 0%;
+}
+
+#info ul li{
+  display: block;
+  background: url(list-image.png) center left no-repeat;
+  padding: 4% 5% 4% 12%;
+  word-wrap:break-word;
+  font-size: large;
+  border: #c0c0c0;
+  border-style: none none solid none;
+  border-width: 1px;
+}
+
+#info ul li span{
+  font-size: x-large;
+}
+
+#delete_button {
+  display: none;
+  margin: 0 auto;
+  padding: 15px 32px;
+  background-color: pink;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-size: large;
+}
+
+
 .title{
   color: white;
   background-color: pink;

@@ -6,6 +6,8 @@
   <title>我的备忘录</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <script src="main.js"></script>
   <script src="jquery-3.3.1.min.js"></script>
 </head>
@@ -16,14 +18,21 @@
         待办项
       </div>
       <div id="list">
-          <a href="javascript:void(0);" class="new_todo" onclick="onClickAdd()">添加新待办</a>
+          <a href="javascript:void(0);" class="new_todo" onclick="onClickAdd();return false">添加新待办</a>
       </div>
     </div>
     <div id='info'>
-      <div class="title">
+      <div class="title" id="todo_name">
         点击待办查看信息  
       </div>
-
+      <ul>
+        <li><span>描述：</span><br><p id="discription"></p></li>
+        <li><span>添加时间：</span><br><p id="createTime"></p></li>
+        <li><span>截止时间：</span><br><p id="dueTime"></p></li>
+      </ul>
+      <div id="button_div">
+        <button id="delete_button">删除</button>
+      </div>
     </div>
   </div>
 </body>
