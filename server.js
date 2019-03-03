@@ -22,21 +22,25 @@ var server = http.createServer((req,res)=>{
       break;
     case 'POST':
       if(requestUrl.path=='/new_todo'){
-        //newTodoItem(req,res);
-        var body;
-        req.on('data',(chunk)=>{
-          body+=chunk;
-        })
-        req.on('end',()=>{
-          console.log(body);
-        })
-        res.end();
+        newTodoItem(req,res);
+        
       }
     default:
       res.statusCode=400;
       res.end('Bad Requst');
   };
 })
+
+function newTodoItem(req,res) {
+  var body;
+  req.on('data',(chunk)=>{
+    body+=chunk;
+  })
+    req.on('end',()=>{
+    console.log(body);
+  })
+  res.end();
+}
 
 function getStaticFile(req,res) {
    //解析请求
