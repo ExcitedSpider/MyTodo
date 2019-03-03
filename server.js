@@ -5,20 +5,33 @@ var path = require('path');
 var root = __dirname+'/public'
 
 var server = http.createServer((req,res)=>{
+
+  var requestUrl = url.parse(req.url);
   switch(req.method)
   {
     /*
     {GET,/} 获得主页面 index.html
     {GET,/todo} ajax获得Todo的JSON数据
     */ 
-    case 'GET':
-      var requestUrl = url.parse(req.url);
+    case 'GET': 
       if(requestUrl.path=='/todo'){
         getTodoList(res);
       }else{
         getStaticFile(req,res);
       }
       break;
+    case 'POST':
+      if(requestUrl.path=='/new_todo'){
+        //newTodoItem(req,res);
+        var body;
+        req.on('data',(chunk)=>{
+          body+=chunk;
+        })
+        req.on('end',()=>{
+          console.log(body);
+        })
+        res.end();
+      }
     default:
       res.statusCode=400;
       res.end('Bad Requst');

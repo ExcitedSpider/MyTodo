@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>新待办</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="new_todo.css">
+  <script src="new_todo.js"></script>
+</head>
+<body>
+  <div>
+      <div id='title'>新待办</div>
+    <form action="/new_todo" method="POST" id="form">
+      <div>
+        <label for="name">名称：</label>
+        <input type="text" name="name" id="name">
+      </div>
+      <div>
+        <label for="description">描述：</label>
+        <textarea form="form" name="description" id="description"></textarea>
+      </div>
+      <div>
+        <label for="duetime">到期时间：</label>
+        <input type="datetime-local" name="duetime" id="duetime">
+      </div>
+         <input type="submit" value="提交" id="submit">
+    </form>
+  </div>
+</body>
+</html>

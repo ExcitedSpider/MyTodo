@@ -5,6 +5,7 @@ html{
 }
 
 body{
+  margin: 0;
   height: 80%;
 }
 
@@ -42,18 +43,24 @@ body{
   color: darksalmon;
 }
 
-#todo a:active{
+#todo a:hover{
   color: white;
   background-color: pink;
 }
 
-#new_todo:active{
+#todo a:active{
+  background-color: rgb(255, 98, 125);
+  border: none;
+}
+
+#new_todo:hover{
   font-size: xx-large !important;
   color: white !important;
   background-color: pink !important;
 }
 
 #info ul{
+  display: none;
   list-style: outside none; 
   padding-left: 0%;
   margin-top: 0%;
@@ -72,12 +79,13 @@ body{
 
 #info ul li span{
   font-size: x-large;
+  
 }
 
 #delete_button {
   display: none;
-  margin: 0 auto;
-  padding: 15px 32px;
+  margin: auto;
+  padding: 4% 6%;
   background-color: pink;
   border: none;
   color: white;
@@ -86,6 +94,18 @@ body{
   font-size: large;
 }
 
+#delete_button:hover{
+  background-color: rgb(248, 136, 155);
+}
+
+#delete_button:active{
+  background-color: rgb(255, 98, 125);
+  border: none;
+}
+
+#delete_button:focus{
+  outline: none;
+}
 
 .title{
   color: white;

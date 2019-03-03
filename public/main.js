@@ -4,6 +4,8 @@ function onClickTodo(index){
 
   document.getElementById('delete_button').style.display='block';
 
+  document.querySelector("#info ul").style.display='block';
+
   var todo = todos[index]
   document.getElementById('todo_name').innerHTML = todo.name;
   document.getElementById('discription').innerHTML = todo.discription;
