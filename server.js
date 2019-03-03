@@ -7,6 +7,7 @@ var root = __dirname+'/public'
 var server = http.createServer((req,res)=>{
 
   var requestUrl = url.parse(req.url);
+
   switch(req.method)
   {
     /*
@@ -20,11 +21,14 @@ var server = http.createServer((req,res)=>{
         getStaticFile(req,res);
       }
       break;
+    /*
+     * {POST,/new_todo,json} 添加待办事项 
+     */
     case 'POST':
       if(requestUrl.path=='/new_todo'){
         newTodoItem(req,res);
-        
       }
+      break;
     default:
       res.statusCode=400;
       res.end('Bad Requst');
@@ -32,19 +36,30 @@ var server = http.createServer((req,res)=>{
 })
 
 function newTodoItem(req,res) {
-  var body;
+  var body='';
+  req.setEncoding('utf8');
   req.on('data',(chunk)=>{
     body+=chunk;
   })
-    req.on('end',()=>{
+  req.on('end',()=>{
     console.log(body);
+    var reqData = JSON.parse(body);
+    var data = fs.readFileSync(__dirname+'/data/data.json')
+    var todo = JSON.parse(data);
+    todo.todos.push(reqData);
+    fs.writeFile(__dirname+'/data/data.json',JSON.stringify(todo),(err)=>{
+      if(err){
+        res.statusCode = 500;
+        res.end('Internal Error');
+      }else{
+        res.end(JSON.stringify({status:'OK'}));
+      }
+    });
   })
-  res.end();
 }
 
 function getStaticFile(req,res) {
    //解析请求
-   console.log('User: '+req.connection.remoteAddress+' connect.')
    var requestUrl = url.parse(req.url);
    if(requestUrl.pathname==='/'){
      requestUrl.pathname='/index.html'
@@ -52,7 +67,6 @@ function getStaticFile(req,res) {
    var requestPath = path.join(root,requestUrl.pathname);
 
    //检查文件是否存在
-   console.log('request file:'+requestPath);
    fs.stat(requestPath,(err,stat)=>{
      if(err){
        res.statusCode=404;
