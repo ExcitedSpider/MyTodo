@@ -7,6 +7,10 @@ var root = __dirname+'/public'
 var server = http.createServer((req,res)=>{
   switch(req.method)
   {
+    /*
+    GET / 获得主页面 index.html
+    GET /todo ajax获得Todo的JSON数据
+    */ 
     case 'GET':
       var requestUrl = url.parse(req.url);
       if(requestUrl.path=='/todo'){
