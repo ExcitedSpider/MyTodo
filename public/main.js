@@ -1,10 +1,11 @@
-var todos = {}
+var todos = {};
+var currentIndex = 0;
 
 function onClickTodo(index){
 
   document.getElementById('delete_button').style.display='block';
-
   document.querySelector("#info ul").style.display='block';
+  currentIndex = index;
 
   var todo = todos[index]
   document.getElementById('todo_name').innerHTML = todo.name;
@@ -23,6 +24,23 @@ function getTodos(){
     };
   }});
 };
+
+function onClickDelete() {
+  var requstBody = {};
+  requstBody.index = currentIndex;
+  $.ajax({
+    url:"delete_todo",
+    data:JSON.stringify(requstBody),
+    type:'DELETE',
+    success:()=>{
+      alert('删除成功');
+      self.location.href=''
+    },
+    error:()=>{
+      alert('删除失败');
+    }
+  })
+}
 
 onload=function(){
   getTodos();
